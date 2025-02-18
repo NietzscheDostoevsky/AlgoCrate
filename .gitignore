@@ -1,0 +1,50 @@
+# General ignores
+.DS_Store
+Thumbs.db
+
+# Python ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+.idea/
+
+# Java ignores (Eclipse)
+bin/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.iml
+
+# Eclipse-specific ignores
+.metadata/
+.classpath
+.project
+.settings/
+
+# Maven ignores (if using Maven)
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle ignores (if using Gradle)
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# VS Code ignores
+.vscode/
+*.code-workspace
+
+# Logs and temp files
+logs/
+*.log
+hs_err_pid*
+
