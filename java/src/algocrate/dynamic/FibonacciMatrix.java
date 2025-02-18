@@ -14,8 +14,7 @@ public class FibonacciMatrix {
 			return n;
 		}
 
-		int[][] F = { { 1, 1 }, 
-					  { 1, 0 }, };
+		int[][] F = { { 1, 1 }, { 1, 0 }, };
 
 		int[][] result = matrixPower(F, n - 1);
 		return result[0][0]; // The top left element gives F(n)
@@ -23,8 +22,7 @@ public class FibonacciMatrix {
 
 	// Matrix Exponentiation
 	private static int[][] matrixPower(int[][] M, int n) {
-		int[][] result = { { 1, 0 }, 
-						   { 0, 1 }, }; // Identity Matrix
+		int[][] result = { { 1, 0 }, { 0, 1 }, }; // Identity Matrix
 
 		int[][] base = M;
 
