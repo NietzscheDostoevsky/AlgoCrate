@@ -22,6 +22,48 @@
 
 package algocrate.dataStructures;
 
-public class Bag {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
+/*
+ * The Bag class represents a bag ( or multiset ) of generic items. 
+ * It supports insertion and interating over the items in arbitrary order.
+ * 
+ * This implementation uses a singly linked list with a static nested class Node
+ * The isEmplty, and size operations take constant time. 
+ * Iteration takes time proportional to the number of items. 
+ */
+public class Bag {
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
