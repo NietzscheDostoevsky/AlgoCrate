@@ -7,7 +7,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package algocrate.utils;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

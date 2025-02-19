@@ -7,7 +7,8 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+
+package algocrate.utils;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

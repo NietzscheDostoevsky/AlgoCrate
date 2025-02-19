@@ -31,7 +31,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package algocrate.utils;
 
 /**
  *  <p><b>Overview.</b>
