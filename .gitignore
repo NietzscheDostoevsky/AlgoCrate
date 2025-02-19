@@ -48,3 +48,4 @@ logs/
 *.log
 hs_err_pid*
 
+python/.pydevproject
