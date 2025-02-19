@@ -49,27 +49,27 @@ public class Bag<Item> implements Iterable<Item> {
 	 * Initialize an empty bag
 	 */
 	public Bag() {
-		first = null;
-		n = 0;
+		this.first = null;
+		this.n = 0;
 	}
 
 	public boolean isEmpty() {
-		return first == null;
+		return this.first == null;
 	}
 
 	public int size() {
-		return n;
+		return this.n;
 	}
 
 	/*
 	 * Add the Item to this bag
 	 */
 	public void add(Item item) {
-		Node<Item> oldfirst = first;
-		first = new Node<Item>();
-		first.item = item;
-		first.next = oldfirst;
-		n++;
+		Node<Item> oldfirst = this.first;
+		this.first = new Node<Item>();
+		this.first.item = item;
+		this.first.next = oldfirst;
+		this.n++;
 	}
 
 	/*
@@ -112,15 +112,14 @@ public class Bag<Item> implements Iterable<Item> {
 	public static void main(String[] args) {
 
 		Bag<String> bag = new Bag<String>();
-		while (!StdIn.isEmpty()) {
-			String item = StdIn.readString();
-			bag.add(item);
+		String[] words = { "is", "this", "the", "real", "life", "is", "this", "just", "fantasy", };
+		for (String word: words) {
+			bag.add(word);
 		}
-
-		System.out.println("size of bag = " + bag.size());
-		for (String s : bag) {
-			System.out.println(s);
+		
+		System.out.println("Number of items in bag: " + bag.size());
+		for(String item: bag) {
+			System.out.println(item);
 		}
-
 	}
 }

@@ -3,8 +3,8 @@ class Bag:
     
     class _Node: 
         """A private class representing a node in the linked list"""
-        
-        def __init__(self, item, next_node = None):
+
+        def __init__(self, item, next_node=None):
             self.item = item
             self.next = next_node
         
@@ -23,8 +23,8 @@ class Bag:
     
     def add(self, item):
         """Adds an item to the bag"""
-        old_first = first
-        first = self._Node(item=item,next_node=old_first)
+        old_first = self.first
+        self.first = self._Node(item=item, next_node=old_first)
         self.n += 1
     
     def __iter__(self):
@@ -34,5 +34,15 @@ class Bag:
             yield current.item
             current = current.next
 
+
 # Unit test 
+if __name__ == "__main__":
+    bag = Bag()
+    items = "is this the real life is this just fantasy".split()
+    for item in items: 
+        bag.add(item)
     
+    print("Size of bag = ", bag.size())
+    for item in bag: 
+        print(item)
+   
