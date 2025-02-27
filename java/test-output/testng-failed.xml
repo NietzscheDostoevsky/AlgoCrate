@@ -6,8 +6,6 @@
       <class name="algocrate.dataStructures.DateTest">
         <methods>
           <include name="testNextDate"/>
-          <include name="testToStringFormat"/>
-          <include name="testLeapYearNextDay"/>
         </methods>
       </class> <!-- algocrate.dataStructures.DateTest -->
     </classes>
