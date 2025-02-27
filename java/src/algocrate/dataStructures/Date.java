@@ -83,9 +83,33 @@ public class Date implements Comparable<Date> {
 	}
 
 	@Override
-	public int compareTo(Date o) {
-		// TODO Auto-generated method stub
+	public int compareTo(Date that) {
+		if (this.year < that.year) 	 return -1;
+		if (this.year > that.year) 	 return 1;
+		if (this.month < that.month) return -1;
+		if (this.month > that.month) return 1;
+		if (this.day < that.day) 	 return -1;
+		if (this.day > that.day)     return 1;
 		return 0;
+	}
+	
+	@Override
+    public String toString() {
+        return month + "/" + day + "/" + year;
+    }
+	
+	@Override
+	public boolean equals(Object other) {
+		if (this == other) return true;
+		if (other == null) return false;
+		if (other.getClass() != this.getClass()) return false;
+		Date that = (Date)other;
+		return (this.month == that.month) && (this.day == that.day) && (this.year == that.year);
+	}
+	
+	@Override
+	public int hashCode() {
+		return day + 31*month + 31*12*year;
 	}
 	
 
