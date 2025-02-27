@@ -24,8 +24,6 @@ package algocrate.dataStructures;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import algocrate.utils.StdIn;
-
 /*
  * The Bag class represents a bag ( or multiset ) of generic items. 
  * It supports insertion and interating over the items in arbitrary order.
