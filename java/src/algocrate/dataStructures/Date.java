@@ -29,17 +29,29 @@ public class Date implements Comparable<Date> {
 	
 	//Constructor to initialize a new date from a date string of format MM/DD/YYYY
 	public Date(String date) {
-		String [] fields = date.split("/");
-		if (fields.length != 3) {
-			throw new IllegalArgumentException("Invalid date");
-		}
-		this.month = Integer.parseInt(fields[0]);
-		this.day = Integer.parseInt(fields[1]);
-		this.year = Integer.parseInt(fields[2]);
-		if (!isValid(month, day, year)) {
-			throw new IllegalArgumentException("Invalid date");
-		}
+	    String[] fields = date.split("/");
+	    if (fields.length != 3) {
+	        throw new IllegalArgumentException("Invalid date format. Expected MM/DD/YYYY");
+	    }
+	    
+	    int month, day, year;
+	    try {
+	        month = Integer.parseInt(fields[0]);
+	        day = Integer.parseInt(fields[1]);
+	        year = Integer.parseInt(fields[2]);
+	    } catch (NumberFormatException e) {
+	        throw new IllegalArgumentException("Invalid date components. Must be numbers.");
+	    }
+
+	    if (!isValid(month, day, year)) {
+	        throw new IllegalArgumentException("Invalid date");
+	    }
+	    
+	    this.month = month;
+	    this.day = day;
+	    this.year = year;
 	}
+
 	
 	public int month() {
 		return this.month; 
@@ -54,9 +66,9 @@ public class Date implements Comparable<Date> {
 	
 	// Returns next date in the calender from the current date
 	public Date next() {
-		if (isValid(month, day + 1, year)) 		return new Date(month, day + 1, year);
-		else if (isValid(month + 1, day, year)) return new Date(month + 1, 1, year); // the current date is the last date of the month
-		else 									return new Date(1, 1, year + 1); // current date is the last date of the year
+		if (isValid(month, day + 1, year)) 		return new Date(month, day + 1, year); // move to the next day if it's valid
+		else if (isValid(month + 1, 1, year))   return new Date(month + 1, 1, year); // if its not valid, move to the next month
+		else 									return new Date(1, 1, year + 1); // if its last day of the year, reset to January 1st of the next year. 
 	}
 	
 	// compare two dates chronologically
@@ -109,9 +121,11 @@ public class Date implements Comparable<Date> {
 	
 	@Override
 	public int hashCode() {
-		return day + 31*month + 31*12*year;
+	    int result = 17;
+	    result = 31 * result + year;
+	    result = 31 * result + month;
+	    result = 31 * result + day;
+	    return result;
 	}
-	
 
-	
 }
