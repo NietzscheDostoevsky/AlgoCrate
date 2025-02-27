@@ -3,14 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="algocrate.dataStructures.TransactionTest">
+      <class name="algocrate.dataStructures.StackTest">
         <methods>
-          <include name="testCompareByAmount"/>
-          <include name="testSortingByDate"/>
-          <include name="testCompareByWhen"/>
-          <include name="testCompareByWho"/>
+          <include name="testPeek"/>
         </methods>
-      </class> <!-- algocrate.dataStructures.TransactionTest -->
+      </class> <!-- algocrate.dataStructures.StackTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

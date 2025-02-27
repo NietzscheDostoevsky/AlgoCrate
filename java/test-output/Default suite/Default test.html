@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>6/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Feb 28 02:40:44 IST 2025</td>
+<td>Started on:</td><td>Fri Feb 28 05:12:51 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (29 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (34 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,35 +75,104 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testTransactionParsing()'><b>testTransactionParsing</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
-<td></td>
+<td title='algocrate.dataStructures.StackTest.testPopEmptyStack()'><b>testPopEmptyStack</b><br>Test class: algocrate.dataStructures.StackTest</td>
+<td><div><pre>java.util.NoSuchElementException: Stack Underflow
+	at algocrate.dataStructures.Stack.pop(Stack.java:52)
+	at algocrate.dataStructures.StackTest.testPopEmptyStack(StackTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1000966072", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1000966072'><pre>java.util.NoSuchElementException: Stack Underflow
+	at algocrate.dataStructures.Stack.pop(Stack.java:52)
+	at algocrate.dataStructures.StackTest.testPopEmptyStack(StackTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testSortingByAmountDescending()'><b>testSortingByAmountDescending</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
+<td title='algocrate.dataStructures.StackTest.testToString()'><b>testToString</b><br>Test class: algocrate.dataStructures.StackTest</td>
 <td></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testCompareByAmount()'><b>testCompareByAmount</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
+<td title='algocrate.dataStructures.StackTest.testSize()'><b>testSize</b><br>Test class: algocrate.dataStructures.StackTest</td>
 <td></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testCompareByWhen()'><b>testCompareByWhen</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
+<td title='algocrate.dataStructures.StackTest.testGenericTypes()'><b>testGenericTypes</b><br>Test class: algocrate.dataStructures.StackTest</td>
 <td></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testSortingByDate()'><b>testSortingByDate</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
+<td title='algocrate.dataStructures.StackTest.testPeek()'><b>testPeek</b><br>Test class: algocrate.dataStructures.StackTest</td>
 <td></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 <tr>
-<td title='algocrate.dataStructures.TransactionTest.testCompareByWho()'><b>testCompareByWho</b><br>Test class: algocrate.dataStructures.TransactionTest</td>
+<td title='algocrate.dataStructures.StackTest.testIsEmpty()'><b>testIsEmpty</b><br>Test class: algocrate.dataStructures.StackTest</td>
 <td></td>
 <td>0</td>
-<td>algocrate.dataStructures.TransactionTest@1613674b</td></tr>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
+<tr>
+<td title='algocrate.dataStructures.StackTest.testIterator()'><b>testIterator</b><br>Test class: algocrate.dataStructures.StackTest</td>
+<td></td>
+<td>0</td>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
+<tr>
+<td title='algocrate.dataStructures.StackTest.testPushAndPop()'><b>testPushAndPop</b><br>Test class: algocrate.dataStructures.StackTest</td>
+<td></td>
+<td>0</td>
+<td>algocrate.dataStructures.StackTest@649bec2e</td></tr>
 </table><p>
 </body>
 </html>
