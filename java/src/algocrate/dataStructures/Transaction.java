@@ -72,7 +72,11 @@ public class Transaction implements Comparable<Transaction> {
         // return Objects.hash(who, when, amount);
     }
     
-
+    @Override
+    public String toString() {
+    	return String.format("%-10s %10s %8.2f", who, when, amount);
+    }
+    
     public static class WhoOrder implements Comparator<Transaction> {
 
         @Override
