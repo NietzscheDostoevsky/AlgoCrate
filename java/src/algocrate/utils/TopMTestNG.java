@@ -23,6 +23,7 @@ public class TopMTestNG {
 	private static final int M = 5; // Top M transactions to keep. 
 	private List<Transaction> transactions;
 	private Stack<Transaction> topTransactions;
+	private MinPQ<Transaction> pq;
 	
 	@BeforeClass
 	public void setup() throws IOException {
@@ -32,7 +33,7 @@ public class TopMTestNG {
 		// Reading transactions from the test data file, tinyBatch.txt
 		try (BufferedReader reader = new BufferedReader(new FileReader("../java/src/algocrate/utils/tinyBatch.txt"))) {
 			String line;
-			MinPQ<Transaction> pq = new MinPQ<>(M + 1); // MinPQ maintaining top M elements. 
+			pq = new MinPQ<>(M + 1); // MinPQ maintaining top M elements. 
 			
 			while ((line = reader.readLine()) != null) {
 				Transaction transaction = new Transaction(line) ; 
@@ -67,6 +68,25 @@ public class TopMTestNG {
 		for (Transaction t : topTransactions) 
 			System.out.println(t.toString());
 	}
+	
+	@Test
+	public void testPriorityQueueOrdering() {
+		Transaction previous = null;
+		for (Transaction t : pq) {
+			if (previous != null) {
+				Assert.assertTrue(previous.compareTo(t) <= 0, "Priority Queue shout store elements in min-heap order");
+			}
+			previous = t; 
+		}	
+	}
+	
+	@Test
+    public void testPriorityQueueMinElement() {
+        Transaction pqMin = pq.delMin(); // Get the smallest element in PQ
+        for (Transaction t : pq) {
+            Assert.assertTrue(pqMin.compareTo(t) <= 0, "MinPQ should maintain the smallest element at the root.");
+        }
+    }
 }
 
 
