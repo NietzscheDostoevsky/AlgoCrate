@@ -14,7 +14,7 @@ public class TransactionDataGenerator {
     };
     
     private static final int RECORDS_TO_GENERATE = 1000; // Change this for more rows
-    private static final String OUTPUT_FILE = "largeBatch.txt";
+    private static final String OUTPUT_FILE = "../java/src/algocrate/utils/largeBatch.txt";
 
     public static void main(String[] args) {
         try (FileWriter writer = new FileWriter(OUTPUT_FILE)) {
