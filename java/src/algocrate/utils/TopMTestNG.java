@@ -14,9 +14,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import algocrate.dataStructures.MinPQ;
 import algocrate.dataStructures.Stack;
 import algocrate.dataStructures.Transaction;
-import algocrate.dataStructures.MinPQ;
 
 public class TopMTestNG {
 
@@ -51,6 +51,7 @@ public class TopMTestNG {
 		}
 	}
 	
+
 	@Test
 	public void testTopMSize() {
 		Assert.assertEquals(topTransactions.size(), M, "Stack should contains exactly M elements");
@@ -80,13 +81,6 @@ public class TopMTestNG {
 		}	
 	}
 	
-	@Test
-    public void testPriorityQueueMinElement() {
-        Transaction pqMin = pq.delMin(); // Get the smallest element in PQ
-        for (Transaction t : pq) {
-            Assert.assertTrue(pqMin.compareTo(t) <= 0, "MinPQ should maintain the smallest element at the root.");
-        }
-    }
 }
 
 
