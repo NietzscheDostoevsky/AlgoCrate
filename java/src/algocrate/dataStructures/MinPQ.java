@@ -5,8 +5,6 @@
  * operations in O(logN) , N being the number of elements in the PQ
  * 
  * The implementation uses a Binary Heap data Structure to achieve this. 
- * 
- * 
  ******************************************************************************/
 
 package algocrate.dataStructures;
@@ -213,33 +211,5 @@ public class MinPQ<Key> implements Iterable<Key> {
 			if (!hasNext()) throw new NoSuchElementException();
 			return copy.delMin();
 		}
-		
 	}
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
