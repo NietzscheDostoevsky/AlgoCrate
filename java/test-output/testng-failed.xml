@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="algocrate.dataStructures.StackTest">
+      <class name="algocrate.utils.TopMTestNG">
         <methods>
-          <include name="testPeek"/>
+          <include name="testPriorityQueueOrdering"/>
+          <include name="printTopTransactions"/>
+          <include name="testTransactionsPresence"/>
+          <include name="testTopMSize"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- algocrate.dataStructures.StackTest -->
+      </class> <!-- algocrate.utils.TopMTestNG -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
