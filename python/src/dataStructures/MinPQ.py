@@ -15,7 +15,7 @@ class MinPQ:
         self._swim(self.N -1)
     
     def del_min(self):
-        if self._is_empty():
+        if self.is_empty():
             raise IndexError("PQ Underflow")
         
         min_item = self.pq[0]
@@ -48,4 +48,11 @@ class MinPQ:
     def __iter__(self):
         return iter(sorted(self.pq))
     
+pq = MinPQ()
+pq.insert(5)
+pq.insert(3)
+pq.insert(8)
+pq.insert(1)
 
+print(pq.del_min())  # Should print 1
+print(pq.del_min())  # Should print 3
