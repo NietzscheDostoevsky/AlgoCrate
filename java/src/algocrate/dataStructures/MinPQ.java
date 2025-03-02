@@ -168,11 +168,45 @@ public class MinPQ<Key> implements Iterable<Key> {
 		return isMinHeapOrdered(left) && isMinHeapOrdered(right); // Recursively checks the left and right subtrees.
 	}
 	
+	// Iterate over keys in the PQ in ascending order
 	@Override
 	public Iterator<Key> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HeapIterator();
 	}
+	
+	private class HeapIterator implements Iterator<Key> {
+		
+		private MinPQ<Key> copy; // create a new pq
+		
+		//add all items to copy of heap
+		//takes linear time since already in heap order. 
+		public HeapIterator() {
+			//initialize the pq
+			if (comparator == null) copy = new MinPQ<Key>(size()); 				// new pq at the current size() of og PQ when iterator() is called. 
+			else 					copy = new MinPQ<Key>(size(), comparator);
+			
+			for (int i = 1; i <= N; i++) 
+				copy.insert(pq[i]); 
+		}
+
+		@Override
+		public boolean hasNext() {
+			return (!copy.isEmpty());
+		}
+		
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public Key next() {
+			if (!hasNext()) throw new NoSuchElementException();
+			return copy.delMin();
+		}
+		
+	}
+	
 
 }
 
