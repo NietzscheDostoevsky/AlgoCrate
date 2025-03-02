@@ -105,7 +105,7 @@ public class MinPQ<Key> implements Iterable<Key> {
 		pq[N+1] = null; // avoid loitering
 		
 		//resize the array 
-		if (N > (pq.length - 1) / 4) resize(pq.length / 2);
+		if ((N > 0) && (N == (pq.length - 1)/4)) resize(pq.length / 2);
 		assert isMinHeap();
 		return minKey;
 	}
@@ -116,12 +116,21 @@ public class MinPQ<Key> implements Iterable<Key> {
 	
 	//Swim 
 	private void swim(int k) {
-		
+		while (k > 1 && greater(k/2, k)) { //is parent greater than child? 
+			exch(k/2, k);				   //yes, then exchange parent with child.
+			k = k/2;      				   //then move up the tree to parent
+		}
 	}
 	
-	//Sink
+	//Sink (maintaining minimum element at the top of the tree)
 	private void sink(int k) {
-		
+		while (2*k <= N) { 						//checking bounds for tree, ie the node has atleast one child. 
+			int j = 2*k; 						//left child index
+			if (j < N && greater(j, j+1)) j++;  //if right child exists, and smaller than left child, move to right child
+			if (!greater(k, j)) break; 			//if parent is smaller or equal to smaller child, stop  (minheap property holds)
+			exch(k, j); 						//exchange parent with child
+			k = j; 								//move down the tree, and repeat.
+		}
 	}
 	
 	/***************************************************************************
