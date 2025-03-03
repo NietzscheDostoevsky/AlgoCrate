@@ -59,4 +59,32 @@ public class IndexMinPQTest {
         Assert.assertNotEquals(pq.minIndex(), 1);
         Assert.assertEquals(pq.minKey(), "bravo");
     }
+    
+    @Test
+    public void testPrint() {
+    	String[] strings = { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+    	
+    	IndexMinPQ<String> p = new IndexMinPQ<String>(strings.length);
+    	for (int i = 0; i < strings.length; i++)
+    		p.insert(i, strings[i]);
+    	
+    	// Delete and print each key. 
+    	while (!p.isEmpty()) {
+    		int i = p.delMin();
+    		System.out.println(i + " " + strings[i]);
+    	}
+    	System.out.println();
+    	
+    	// Reinsert the same strings. 
+    	for (int i = 0; i < strings.length; i++) 
+    		p.insert(i, strings[i]);
+    	
+    	// print each key using an iterator.
+    	for (int i : p)
+    		System.out.println(i + " " + strings[i]);
+    	
+    	while (!p.isEmpty())
+    		p.delMin();
+    	
+    }
 }
