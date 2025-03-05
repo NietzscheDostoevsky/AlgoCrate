@@ -186,12 +186,21 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
 	
 	// Swim a node from bottom to up 
 	private void swim(int k) {
-		
+		while (k > 1 && greater(k/2, k)) {
+			exch(k, k/2);
+			k = k/2;
+		}
 	}
 	
 	// Sink a node from top to bottom
 	private void sink(int k) {
-		
+		while (2*k <= n) {
+			int j = 2*k;
+			if (j < n && greater(j, j + 1)) j++;
+			if (!greater(k, j)) break;
+			exch(k, j);
+			k = j;
+		}
 	}
 	
 	/***************************************************************************
