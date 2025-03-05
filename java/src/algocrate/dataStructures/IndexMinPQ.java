@@ -217,21 +217,30 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
 	}
 	
 	private class HeapIterator implements Iterator<Integer> {
-
+		
+		private IndexMinPQ<Key> copy; // create a new pq
+		
+		// add all elements to a copy of heap
+		// takes linear time, as already in heap order so no keys move. 
+		public HeapIterator() {
+			copy = new IndexMinPQ<Key>(pq.length -1);
+			for (int i = 1; i <=n; i++)
+				copy.insert(pq[i], keys[pq[i]]); 
+		}
+		
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
+			return !copy.isEmpty();
 		}
 
 		@Override
 		public Integer next() {
-			// TODO Auto-generated method stub
-			return null;
+			if (!hasNext()) throw new NoSuchElementException();
+			return copy.delMin();
 		}
 		
 		public void remove() {
-			
+			throw new UnsupportedOperationException();
 		}
 	}
 }
