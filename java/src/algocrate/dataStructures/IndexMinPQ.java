@@ -184,22 +184,23 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
 	 * Heap helper functions.
 	 ***************************************************************************/
 	
-	// Swim a node from bottom to up 
+	
+	//Swim 
 	private void swim(int k) {
-		while (k > 1 && greater(k/2, k)) {
-			exch(k, k/2);
-			k = k/2;
+		while (k > 1 && greater(k/2, k)) { //is parent greater than child? 
+			exch(k/2, k);				   //yes, then exchange parent with child.
+			k = k/2;      				   //then move up the tree to parent
 		}
 	}
 	
-	// Sink a node from top to bottom
+	//Sink (maintaining minimum element at the top of the tree)
 	private void sink(int k) {
-		while (2*k <= n) {
-			int j = 2*k;
-			if (j < n && greater(j, j + 1)) j++;
-			if (!greater(k, j)) break;
-			exch(k, j);
-			k = j;
+		while (2*k <= n) { 						//checking bounds for tree, ie the node has atleast one child. 
+			int j = 2*k; 						//left child index
+			if (j < n && greater(j, j+1)) j++;  //if right child exists, and smaller than left child, move to right child
+			if (!greater(k, j)) break; 			//if parent is smaller or equal to smaller child, stop  (minheap property holds)
+			exch(k, j); 						//exchange parent with child
+			k = j; 								//move down the tree, and repeat.
 		}
 	}
 	
