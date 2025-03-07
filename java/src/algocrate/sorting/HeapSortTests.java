@@ -4,7 +4,11 @@ package algocrate.sorting;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import algocrate.utils.Stopwatch;
+
 import java.util.Arrays;
+import java.util.Random;
 
 public class HeapSortTests {
 
@@ -47,7 +51,7 @@ public class HeapSortTests {
         int size = 10000;
         Integer[] input = new Integer[size];
         Integer[] expected = new Integer[size];
-
+        Stopwatch stopwatch = new Stopwatch();
         for (int i = 0; i < size; i++) {
             input[i] = size - i;  // Descending order
             expected[i] = i + 1;  // Sorted order
@@ -55,5 +59,52 @@ public class HeapSortTests {
 
         Heap.sort(input);
         Assert.assertEquals(input, expected, "HeapSort failed on large input");
+        System.out.println("Heapsort took : " + stopwatch.elapsedTime() + " secs" + " to sort " + size + " elements");
+        System.out.println("\n" + "-------------------------------------------------");
+        
+    }
+    
+    private static final int INITIAL_N = 1000; // Starting size
+    private static final int MAX_DOUBLINGS = 12; // Number of times to double N
+    private static final Random random = new Random();
+
+    @Test
+    public void testMergeSortDoubling() {
+        int N = INITIAL_N;
+
+        double prevTime = 0.0; // Store previous run time to compare growth rate
+        
+        System.out.println("DOUBLING TEST" + " " + MAX_DOUBLINGS + " TIMES");
+        for (int i = 0; i < MAX_DOUBLINGS; i++) {
+            Integer[] array = generateRandomArray(N);
+            Integer[] copy = Arrays.copyOf(array, array.length); // Copy for validation
+
+            Stopwatch stopwatch = new Stopwatch();
+            Heap.sort(array);
+            double elapsedTime = stopwatch.elapsedTime();
+
+            // Validate sorting correctness
+            Arrays.sort(copy);
+            Assert.assertEquals(array, copy, "Heap Sort failed for N=" + N);
+
+            // Print results
+            System.out.printf("N = %d, Time = %.6f seconds", N, elapsedTime);
+            if (i > 0) {
+                System.out.printf(", Time Ratio = %.2f", elapsedTime / prevTime);
+            }
+            System.out.println();
+
+            prevTime = elapsedTime;
+            N *= 2; // Double N for next iteration
+        }
+        System.out.println("\n" + "-------------------------------------------------");
+    }
+
+    private Integer[] generateRandomArray(int N) {
+        Integer[] array = new Integer[N];
+        for (int i = 0; i < N; i++) {
+            array[i] = random.nextInt(1000000); // Random values
+        }
+        return array;
     }
 }
