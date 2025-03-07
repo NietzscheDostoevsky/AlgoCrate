@@ -7,8 +7,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.Arrays;
 
-import algocrate.sorting.*; // Import your sorting algorithm classes
-
 public class SortingTests {
 
     @DataProvider(name = "sortingData")

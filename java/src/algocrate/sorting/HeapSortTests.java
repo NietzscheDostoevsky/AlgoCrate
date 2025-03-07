@@ -44,7 +44,7 @@ public class HeapSortTests {
 
     @Test
     public void testHeapSortLargeArray() {
-        int size = 1000;
+        int size = 10000;
         Integer[] input = new Integer[size];
         Integer[] expected = new Integer[size];
 
