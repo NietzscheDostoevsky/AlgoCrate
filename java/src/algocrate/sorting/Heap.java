@@ -1,5 +1,5 @@
 package algocrate.sorting;
 
-public class Heapsort {
+public class Heap {
 
 }
