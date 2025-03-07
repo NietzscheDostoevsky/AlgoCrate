@@ -1,6 +1,6 @@
-package algocrate.sorting;
+// Testcases to check the implementation validity of differnt sorting algos. 
 
-package algocrate.utils;
+package algocrate.sorting;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
