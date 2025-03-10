@@ -50,3 +50,4 @@ hs_err_pid*
 
 python/.pydevproject
 /java/test-output
+java/TestData/leipzig1m.txt
