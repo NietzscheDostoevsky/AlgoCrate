@@ -14,9 +14,26 @@ public interface SymbolTable<Key extends Comparable<Key>, Value> {
 	Key ceiling(Key key);				// smallest key greater than or equal to key
 	int rank(Key key);					// number of keys less than key
 	Key select(int k);					// key of rank k
-	void deleteMin();					// delete smallest key
-	void deleteMax();					// delete largest key
-	int size(Key lo, Key hi);			// number of keys in [lo...hi]
+	
+	default void deleteMin() {			// delete smallest key
+		delete(min());
+	}
+	
+	default void deleteMax() {			// delete largest key
+		delete(max());
+	}
+	
+	default int size(Key lo, Key hi) {	// number of keys in [lo...hi]
+		if (hi.compareTo(lo) < 0) 
+			return 0;
+		else if (contains(hi)) 
+			return rank(hi) - rank(lo) + 1;
+		else return rank(hi) - rank(lo);
+	}
+	
 	Iterable<Key> keys(Key lo, Key hi); // keys in [lo...hi] in sorted order
-	Iterable<Key> keys();				// all keys in the table, in sorted order
+	
+	default Iterable<Key> keys() {		// all keys in the table, in sorted order
+		return keys(min(), max());
+	}
 }
