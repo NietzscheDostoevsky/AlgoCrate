@@ -6,7 +6,7 @@ package algocrate.searching;
  * For functionality regarding methods, see {@link OrderedST.java}.
  */
 
-public interface UnorderedST<Key, Value> {
+public interface UnorderedST<Key, Value> extends SymbolTable<Key, Value>{
 	
 	void put(Key key, Value value);
 	Value get(Key key);

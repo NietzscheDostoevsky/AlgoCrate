@@ -4,7 +4,7 @@ package algocrate.searching;
  * Interface for an Ordered Symbol Table abstract DataType.
  */
 
-public interface OrderedST<Key extends Comparable<Key>, Value> {
+public interface OrderedST<Key extends Comparable<Key>, Value> extends SymbolTable<Key, Value> {
 	
 	void put(Key key, Value value); 								// put key-value pair into the table, remove key from table if value is null
 	Value get(Key key); 											//value paired with key, null if key is absent
