@@ -10,7 +10,7 @@ public interface UnorderedST<Key, Value> extends SymbolTable<Key, Value>{
 	
 	void put(Key key, Value value);
 	Value get(Key key);
-	void deleteKey(Key key);
+	void delete(Key key);
 	boolean contains(Key key);
 	boolean isEmpty();
 	int size();
