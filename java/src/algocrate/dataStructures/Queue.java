@@ -1,5 +1,6 @@
 package algocrate.dataStructures;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /******************************************************************************
@@ -91,47 +92,48 @@ public class Queue<Item> implements Iterable<Item> {
         n--;
         return returnItem;
     }
+    
+    // Returns a String representation of this queue
+    
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (Item item: this) {
+            s.append(item);
+            s.append(" ");
+        }
+        return s.toString();
+    }
+    
+    // Returns an iterator that iterates over the items in this queue in FIFO order.
+    public Iterator<Item> iterator() {
+        return new LinkedIterator(first);
+    }
 
+    private class LinkedIterator implements Iterator<Item> {
+        
+        private Node<Item> current;
+        
+        public LinkedIterator(Node<Item> first) {
+            current = first;
+        }
+        
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+        
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public Item next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
