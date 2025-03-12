@@ -1,5 +1,7 @@
 package algocrate.searching;
 
+import algocrate.dataStructures.Queue;
+
 /******************************************************************************
  * Unordered Symbol Table (Sequential Search ST) using a Singly Linked List.
  *
@@ -120,55 +122,12 @@ public class SequentialSearchST<Key, Value> implements UnorderedST<Key, Value> {
        x.next = delete(x.next, key); // Recursively deletes in the rest of the list
        return x;                     // Return the current node. 
     }
-
+    
+    public Iterable<Key> keys() {
+        Queue<Key> queue = new Queue<>();
+        for (Node x = first; x != null; x = x.next)
+            queue.enqueue(x.key);
+        
+        return queue;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
