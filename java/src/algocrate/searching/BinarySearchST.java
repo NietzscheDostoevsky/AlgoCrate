@@ -23,6 +23,7 @@ package algocrate.searching;
  *  - Uses **binary search** for efficient key lookups.
  *  - The key type **must** implement Comparable.
  *  - The value associated with a key **cannot** be `null`; setting a value to `null` is equivalent to deletion.
+ *  - Uses dynamic resizing of arrays, so there is no limit on the number of elements that can be added
  *  
  * Performance:
  *  - **get()**, **contains()**, **rank()**: Worst-case Θ(log N) time (binary search).
@@ -48,18 +49,47 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
     private Value[] vals;
     private int n = 0;
     
-    // INitialize an empty BST
+    // INitialize an empty symbol table
+    public BinarySearchST() {
+        this(INITIAL_CAPACITY);
+    }
     
+    // Initialize an symbol table with a specified initial capacity. 
+    @SuppressWarnings({ "unchecked" })
+    public BinarySearchST(int initialCapacity) {
+        this.keys = (Key[]) new Comparable[initialCapacity];
+        this.vals = (Value[]) new Object[initialCapacity];
+    }
     
+    // Resizing the underlying arrays 
+    @SuppressWarnings("unchecked")
+    private void resize(int capacity) {
+        assert capacity >= n;
+        Key[] tempKeys = (Key[]) new Comparable[capacity];
+        Value[] tempVals = (Value[]) new Object[capacity];
+
+        for (int i = 0; i < n; i++) {
+            tempKeys[i] = keys[i];
+            tempVals[i] = vals[i];
+        }
+        keys = tempKeys;
+        vals = tempVals;
+    }
+   
+    // Inserts the specified key-value pair into the symbol table, overwriting th eold value with 
+    // the new value if ST already contains the specified key. Deletes the key if value supplied is null.
     @Override
     public void put(Key key, Value value) {
-        // TODO Auto-generated method stub
         
     }
-
+    
+    // Returns the value associated with the given key in this ST
     @Override
     public Value get(Key key) {
-        // TODO Auto-generated method stub
+        if (key == null) throw new IllegalArgumentException("argument to get is null");
+        if (isEmpty()) return null;
+        int i = rank(key);
+        if (i < n && keys[i].compareTo(key) == 0) return vals[i]; // sanity check? 
         return null;
     }
 
@@ -68,23 +98,24 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
         // TODO Auto-generated method stub
         
     }
-
+    
+    // Does thsi symbol table contains the given key? 
     @Override
     public boolean contains(Key key) {
-        // TODO Auto-generated method stub
-        return false;
+        if (key == null) throw new IllegalArgumentException("argument to contains() is null");
+        return get(key) != null;
     }
 
+    // Returns true if this symbol table is empty
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+       return n == 0; 
     }
-
+    
+    // Returns the number of key-value pairs on this symbol table
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return n;
     }
 
     @Override
