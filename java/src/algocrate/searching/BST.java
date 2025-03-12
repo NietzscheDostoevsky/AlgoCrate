@@ -43,7 +43,65 @@ package algocrate.searching;
 
 public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, Value> {
      
-
+    private Node root;          // root of BST
+    
+    private class Node {
+        private Key key;        // sorted by key
+        private Value value;    // associated value
+        private Node left;      // left subtree
+        private Node right;     // right subtree
+        
+        private int size;       // number of nodes in subtree rooted here.
+                                // Every node maintains the invariant that 
+                                // size(x) = size(x.left) + size(x.right) + 1
+    
+        public Node(Key key, Value value, int N) {
+            this.key = key;
+            this.value = value;
+            this.size = N;
+        }
+    }
+    
+    // Initialize an empty symbol table 
+    public BST() {
+    }
+  
+    // Returns true if this ST is empty 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+    
+    // Returns the number of key-value pairs in this symbol table.
+    public int size() {
+        return size(root);
+    }
+    
+    // Returns the number of key-value pairs in a BST rooted at node x.
+    private int size(Node x) {
+        if (x == null)  return 0;
+        else            return x.size;
+    }
+    
+    // Does this ST contains the given key? 
+    public boolean contains(Key key) {
+        if (key == null) throw new IllegalArgumentException("Argument to contains() is null");
+        return get(key) != null;
+    }
+    
+    // Returns the value associated with the given key
+    public Value get(Key key) {
+        return get(root, key);
+    }
+    
+    // Searches the subtree rooted at Node X for the key, and returns the associated value, null if key is the subtree
+    private Value get(Node x, Key key) {
+        if (key == null) throw new IllegalArgumentException("calls get() with a null key");
+        if (x == null) return null;
+        int compare = key.compareTo(x.key);
+        if      (compare > 0) return get(x.right, key);  // If key > root, look in the right node
+        else if (compare < 0) return get(x.left, key);   // if key < root, look in the left node
+        else                  return x.value;            // key == key @ root node.
+    }
 }
 
 
