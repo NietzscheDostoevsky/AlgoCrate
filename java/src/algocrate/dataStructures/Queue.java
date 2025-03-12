@@ -1,5 +1,7 @@
 package algocrate.dataStructures;
 
+import java.util.NoSuchElementException;
+
 /******************************************************************************
  * First-in-first-out (FIFO) queue implementation using a singly linked list.
  *
@@ -29,5 +31,107 @@ package algocrate.dataStructures;
 
 
 public class Queue<Item> implements Iterable<Item> {
+    
+    private Node<Item> first;   // Beginningn of the queue. 
+    private Node<Item> last;    // end of queue
+    private int n;              // total number of elements on queue
+    
+    /*
+     * Would a non-static inner class work?
+     * 
+     * Yes, but it would be unnecessary because the Node doesn’t need to access 
+     * Queue<Item>'s members (like first, last, or n). 
+     * Making Node non-static would just introduce an implicit reference to the enclosing Queue, which is wasteful.
+     */
+    
+    private static class Node<Item> { // Need generic syntax since it's an static class, not linked to the outer class, Queue
+        private Item item;
+        private Node<Item> next; 
+    }
+    
+    // Initialize an empty Queue
+    public Queue() {
+        this.first = null;
+        this.last = null;
+        this.n = 0;
+    }
+    
+    // Returns true if the queue is empty
+    public boolean isEmpty() {
+        return n == 0;
+    }
+    
+    // Returns the number of items in the queue. 
+    public int size() {
+        return n;
+    }
+    
+    // Returns the item least recently added added to this queue.
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("queue underflow");
+        return first.item;
+    }
+    
+    // Adds the item to this queue. 
+    public void enqueue(Item item) {
+        Node<Item> oldLast = last;
+        last = new Node<Item>();
+        last.item = item;
+        last.next = null;
+        if (isEmpty()) first = last;
+        else           oldLast.next = last;
+        n++;
+    }
+    
+    // Removes and return the item on this queue that was least recently added
+    public Item dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("queue underflow");
+        Item returnItem = first.item;
+        first = first.next;
+        n--;
+        return returnItem;
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
